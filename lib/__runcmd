@@ -8,18 +8,21 @@
 
 # x nmap --         -> x nmap --runmain
 
-# x nmap --runcmd   ->  nruncmd / cruncmd / rruncmd
 # x nmap --runcmdb
 
-# x nmap --hruncmd  -> x nmap --runcmd --host
-# x nmap --cruncmd  -> x nmap --runcmd --container
-# x nmap --rruncmd  -> x nmap --runcmd --remote
+# x nmap --runcmd   -> x nmap --runcmd-container
+# x nmap --runcmd --host
+# x nmap --runcmd --remote
 
-# x nmap --druncmd  -> x nmap --runcmd-container-docker
-# x nmap --pruncmd  -> x nmap --runcmd-container-podman
-# x nmap --kruncmd  -> x nmap --runcmd-container-k8s
-# x nmap --bruncmd  -> x nmap --runcmd-container-bwrap
-# x nmap --bruncmd  -> x nmap --runcmd-container-proot
+# x nmap --runcmd --container
+
+# x nmap --runcmd --container --docker
+# x nmap --runcmd --container --podman
+# x nmap --runcmd --container --k8s
+# x nmap --runcmd --container --bwrap
+# x nmap --runcmd --container --proot
+
+
 
 # 内部使用
 # x nmap --runcmd
