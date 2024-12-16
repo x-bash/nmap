@@ -1,0 +1,46 @@
+
+# Explicit over implicit
+# run and exec are used widely, that's why I use runcmd and runmain to avoid any possible conflicts and misudnerstanding.
+
+___x_cmd_nmap___runmain(){
+    ___x_cmd_nmap___runcmd nmap "$@"
+}
+
+___x_cmd_nmap___runcmd(){
+    if ___x_cmd os is win; then
+        ___x_cmd_nmap___runcmd_win "$@"
+    else
+        ___x_cmd_nmap___runcmd_unix "$@"
+    fi
+}
+
+___x_cmd_nmap___runcmd_unix(){
+    ! ___x_cmd_hascmd nmap || {
+        ___x_cmd_cmds nmap "$@"
+        return
+    }
+
+    if ___x_cmd pkg cachebin prepare -s nping nping; then
+        ___x_cmd pkg cachebing nping "$@"
+    fi
+
+    N=nping M="Fail to prepare nping using npkg" log:ret:1
+}
+
+___x_cmd_nmap___runcmd_win(){
+    ___x_cmd_nmap___runcmd_win0 "$@"
+    ___x_cmd winget install nmap
+    ___x_cmd_nmap___runcmd_win0 "$@"
+}
+
+___x_cmd_nmap___runcmd_win0(){
+    ! ___x_cmd_hascmd nmap || {
+        ___x_cmd_cmds nmap "$@"
+        return
+    }
+
+    # check $WINPROG/NMap/bin
+    # check $$WINPRO/NMap/...
+    return 1
+}
+
