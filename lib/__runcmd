@@ -5,10 +5,6 @@
 
 # x alpine run
 # x alpine exec
-# x alpine runcmd -s pkg
-# x alpine runmain -s
-
-
 
 # x nmap --         -> x nmap --runmain
 
@@ -23,8 +19,6 @@
 # x nmap --pruncmd  -> x nmap --runcmd-podman
 # x nmap --kruncmd  -> x nmap --runcmd-k8s
 # x nmap --bruncmd  -> x nmap --runcmd-buubble
-
-
 
 # 内部使用
 # x nmap --runcmd
