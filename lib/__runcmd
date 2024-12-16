@@ -6,9 +6,60 @@
 # x alpine run
 # x alpine exec
 
+# x alpine execenv
+
+# x pixi exec
+
+# x pixi  --name abc
+
+# x pixi //
+
+# x pixi easyrun
+# x pixi erun
+# x pixi srun -> snaprun / sandbox-run
+
+# x pixi snap
+# x pixi //
+# x pixi ::
+# x pixi snap
+
+# x pixi snap
+
+# x pixi snap nmap:nping
+# x pixi nmap:nping
+
+# x pixi snap nmap
+# x pixi nmap
+
+# x alpine snap
+# x alpine snap
+
+# x pixi exec -s nmap nping
+
+# x pixi exec -s
+
+# x alpine snap
+
+# x alpine fire
+# x alpine launch
+# x alpine shoot
+
+# x pixi try
+
+# xd alp
+# xrun
+
+
+# x alpine :<container> gcc
+
+# x pixi --runcmd --> x pixi <nativemcd>
+
+
+
 # x nmap --         -> x nmap --runmain
 
 # x nmap --runcmdb
+
 
 # x nmap --runcmd   -> x nmap --runcmd-container
 # x nmap --runcmd --host
@@ -51,9 +102,7 @@ ___x_cmd_nmap___runcmd_unix(){
         return
     }
 
-    if ___x_cmd pkg cachebin prepare -s nping nping; then
-        ___x_cmd pkg cachebing nping "$@"
-    fi
+    ___x_cmd pkg snap -v v0.3 -n nmap nmap "$@"
 
     N=nping M="Fail to prepare nping using npkg" log:ret:1
 }
