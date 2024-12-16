@@ -6,7 +6,47 @@ ___x_cmd_nmap___main(){
     local op="$1";      shift
     case "$op" in
         -h|--help)      ___x_cmd help -m nmap "$@";    return 0 ;;
+        --winbinexec)   ___x_cmd_nmap___winbinexec     "$@" ;;
 
+        --|--exec)      ___x_cmd_nmap___exec           "$@" ;;
         *)              ;;
     esac
+}
+
+___x_cmd_nmap___exec(){
+    if ___x_cmd os is win; then
+        ___x_cmd_nmap___winbinexec "$@"
+    else
+        ___x_cmd_nmap___nixbinexec "$@"
+    fi
+}
+
+___x_cmd_nmap___nixbinexec(){
+    ! ___x_cmd_hascmd nmap || {
+        ___x_cmd_cmds nmap "$@"
+        return
+    }
+
+    if ___x_cmd pkg cachebin prepare -s nping nping; then
+        ___x_cmd pkg cachebing nping "$@"
+    fi
+
+    N=nping M="Fail to prepare nping using npkg" log:ret:1
+}
+
+___x_cmd_nmap___winbinexec(){
+    ___x_cmd_nmap___winbinexec0 "$@"
+    ___x_cmd winget install nmap
+    ___x_cmd_nmap___winbinexec0 "$@"
+}
+
+___x_cmd_nmap___winbinexec0(){
+    ! ___x_cmd_hascmd nmap || {
+        ___x_cmd_cmds nmap "$@"
+        return
+    }
+
+    # check $WINPROG/NMap/bin
+    # check $$WINPRO/NMap/...
+    return 1
 }
