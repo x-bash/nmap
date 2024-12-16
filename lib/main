@@ -1,16 +1,18 @@
 # shellcheck shell=dash
 
+xrc:mod:lib     nmap    __runcmd
+
 ___x_cmd_nmap___main(){
     [ "$#" -gt 0 ] ||   set -- --help
 
     local op="$1";      shift
     case "$op" in
         -h|--help)      ___x_cmd help -m nmap "$@";     return 0 ;;
-        --winbinexec)   ___x_cmd_nmap___winbinexec      "$@" ;;
 
-        --runcmd)       ___x_cmd_nmap___runcmd          "$@" ;;
-        --|--runmain)   ___x_cmd_nmap___runmain         "$@" ;;
+        --runmainwin)   ___x_cmd_nmap___runcmd_win          "$@" ;; # For nping/ncat module.
 
-        *)              ___x_cmd_nmap___runmain  "$op"   "$@" ;;
+        --runcmd)       ___x_cmd_nmap___runcmd              "$@" ;;
+        --|--runmain)   ___x_cmd_nmap___runmain             "$@" ;;
+        *)              ___x_cmd_nmap___runmain  "$op"      "$@" ;;
     esac
 }

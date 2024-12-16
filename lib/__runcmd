@@ -1,6 +1,39 @@
 
 # Explicit over implicit
 # run and exec are used widely, that's why I use runcmd and runmain to avoid any possible conflicts and misudnerstanding.
+# Both of them are used in sandbox related modules.
+
+# x alpine run
+# x alpine exec
+# x alpine runcmd -s pkg
+# x alpine runmain -s
+
+
+
+# x nmap --         -> x nmap --runmain
+
+# x nmap --runcmd   ->  nruncmd / cruncmd / rruncmd
+# x nmap --runcmdb
+
+# x nmap --nruncmd  -> x nmap --runcmd-native
+# x nmap --cruncmd  -> x nmap --runcmd-container
+# x nmap --rruncmd  -> x nmap --runcmd-remote
+
+# x nmap --druncmd  -> x nmap --runcmd-docker
+# x nmap --pruncmd  -> x nmap --runcmd-podman
+# x nmap --kruncmd  -> x nmap --runcmd-k8s
+# x nmap --bruncmd  -> x nmap --runcmd-buubble
+
+
+
+# 内部使用
+# x nmap --runcmd
+
+# 常用
+# x nmap --runmain
+# x nmap echo hi
+# x nmap -- echo hi
+
 
 ___x_cmd_nmap___runmain(){
     ___x_cmd_nmap___runcmd nmap "$@"
