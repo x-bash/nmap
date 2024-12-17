@@ -1,7 +1,7 @@
 
 
 ___x_cmd_nmap___runmain(){
-    ___x_cmd_nmap___runcmd nmap "$@"
+    ___x_cmd_nmap___runcmd "$@"
 }
 
 ___x_cmd_nmap___runcmd(){
@@ -20,7 +20,7 @@ ___x_cmd_nmap___runcmd_unix(){
 
     ___x_cmd pkg snap -v v0.3 -n nmap nmap "$@"
 
-    N=nping M="Fail to prepare nping using npkg" log:ret:1
+    # N=nmap M="Fail to prepare nmap using pkg" log:ret:1
 }
 
 ___x_cmd_nmap___runcmd_win(){

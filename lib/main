@@ -1,5 +1,6 @@
 # shellcheck shell=dash
 
+___x_cmd log init nmap
 xrc:mod:lib     nmap    __runcmd
 
 ___x_cmd_nmap___main(){
