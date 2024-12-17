@@ -24,9 +24,10 @@ ___x_cmd_nmap___runcmd_unix(){
 }
 
 ___x_cmd_nmap___runcmd_win(){
-    ___x_cmd_nmap___runcmd_win0 "$@"
-    ___x_cmd winget install nmap
-    ___x_cmd_nmap___runcmd_win0 "$@"
+    ___x_cmd_nmap___runcmd_win0 "$@" || {
+        ___x_cmd winget install nmap
+        ___x_cmd_nmap___runcmd_win0 "$@"
+    }
 }
 
 ___x_cmd_nmap___runcmd_win0(){
@@ -34,9 +35,19 @@ ___x_cmd_nmap___runcmd_win0(){
         ___x_cmd_cmds nmap "$@"
         return
     }
-
+    # C:\Program Files
+    # C:\Program Files (x86)
     # check $WINPROG/NMap/bin
     # check $$WINPRO/NMap/...
-    return 1
+    local binpath
+    local binpath_x86
+    binpath="$(___x_cmd pwsh path win_to_linux "C:\Program Files\Nmap\nmap.exe")"
+    binpath_x86="$(___x_cmd pwsh path win_to_linux "C:\Program Files (x86)\Nmap\nmap.exe")"
+
+    if [ -f "$binpath" ] || [ -f "$binpath_x86" ]; then
+        nmap:info "Nmap has been installed successfully, Please open a new terminal session."
+    else
+        return 1
+    fi
 }
 
