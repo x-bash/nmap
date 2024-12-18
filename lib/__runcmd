@@ -1,4 +1,4 @@
-
+# shellcheck shell=dash
 
 ___x_cmd_nmap___runmain(){
     ___x_cmd_nmap___runcmd "$@"
@@ -18,7 +18,7 @@ ___x_cmd_nmap___runcmd_unix(){
         return
     }
 
-    ___x_cmd pkg snap -v v0.3 -n nmap nmap "$@"
+    ___x_cmd pkg snap -v v7.92 -n nmap nmap "$@"
 
     # N=nmap M="Fail to prepare nmap using pkg" log:ret:1
 }
